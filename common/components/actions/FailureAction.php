@@ -82,6 +82,10 @@ class FailureAction extends ErrorAction
     public function init()
     {
         $this->exception = $this->findException();
+        
+        if ($this->view === null) {
+            $this->view = "@frontend/views/fails/failure";
+        }
 
         if ($this->defaultMessage === null) {
             $this->defaultMessage = Yii::t('yii', 'An internal server error occurred.');
