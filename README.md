@@ -25,3 +25,7 @@ What included in kit.
 3. Add links from frontend to backend and conversely.
 4. Create theming in view options.
 5. Add in frontend/config/main options to include favicon in view.
+
+Whats new in modyfaed branch
+----------------------------- 
+1. Custom error hendler in 'common\components\actions\FailureAction' and view.
