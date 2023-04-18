@@ -88,12 +88,14 @@ class FailureAction extends ErrorAction
         }
 
         if ($this->defaultMessage === null) {
-            $this->defaultMessage = Yii::t('yii', 'An internal server error occurred.');
+            $this->defaultMessage = Yii::t('fial', 'An internal server error occurred.');
         }
 
         if ($this->defaultName === null) {
-            $this->defaultName = Yii::t('yii', 'Error');
+            $this->defaultName = Yii::t('fial', 'Error');
         }
+
+        
     }
 
     /**
@@ -144,8 +146,17 @@ class FailureAction extends ErrorAction
      */
     protected function getViewRenderParams()
     {
+        switch($this->getExceptionName()){
+            case "Not Found": 
+                $name = Yii::t('fial', 'Not Found');
+                break;
+            default:
+                $name = $this->getExceptionName();    
+        }
+        
+
         return [
-            'name' => $this->getExceptionName(),
+            'name' => $name,
             'message' => $this->getExceptionMessage(),
             'exception' => $this->exception,
         ];
@@ -161,7 +172,7 @@ class FailureAction extends ErrorAction
     protected function findException()
     {
         if (($exception = Yii::$app->getErrorHandler()->exception) === null) {
-            $exception = new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
+            $exception = new NotFoundHttpException(Yii::t('fial', 'Page not found.'));
         }
 
         return $exception;

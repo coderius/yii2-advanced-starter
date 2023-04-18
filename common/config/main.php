@@ -33,6 +33,16 @@ return [
         // перевод
         'i18n' => [
             'translations' => [
+                'fial*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/translations',
+                    //'sourceLanguage' => 'en-US',
+                    'forceTranslation' => true,
+                    'fileMap' => [
+                        'fial-main' => 'fial.php',
+                    ],
+                ],
+
                 'blog*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@common/translations',
